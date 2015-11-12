@@ -74,7 +74,6 @@ function item_selected(item){
 	}
 	quantity.html(select_quantity);
 
-	//Mostro pulsante 
 	$("#"+row_id).find("#td_button").html('<button type="button" class="btn btn-success" onclick="addItem(this)">Aggiungi</button>');
 
 }
@@ -89,7 +88,7 @@ function addItem(btnClicked) {
 	button.html('<button type="button" class="btn btn-danger" onclick="removeItem(this)">Rimuovi</button>');
 	total += parseFloat($("#"+row_id).find("#td_prezzo").text())*parseFloat($("#"+row_id).find("#td_quantity option:selected").text());
 	$("#total").html("<h6> Totale: "+total.toFixed(2)+"€</h6>");
-	
+
 	//Aggiungo elemento a JSON Obj
 	var item = new Object();
 	item.row_id = row_id;
@@ -127,7 +126,7 @@ function prepareDataForm(){
 </head>
 <body onload="print_row()">
 <div class="container form-group">
-	
+
 	<!--<ul class="nav nav-pills">
 	  <li role="presentation"><a href="index.php">Home</a></li>
 	  <li role="presentation" class="active"><a href="#">Nuovo Ordine</a></li>
@@ -135,7 +134,7 @@ function prepareDataForm(){
 	  <li role="presentation"><a href="#">Amministrazione</a></li>
 	</ul>-->
 
-	  <h2>Ordina i tuoi prodotti</h2>       
+	  <h2>Ordina i tuoi prodotti</h2>
 	  <table class="table">
 		<thead>
 		  <tr>
@@ -150,8 +149,8 @@ function prepareDataForm(){
 		<tbody>
 		</tbody>
 	  </table>
-			
-	
+
+
 	<div id="total"></div>
 	<button id="insertData" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onclick="prepareDataForm()">Concludi Ordine</button>
 </div>
@@ -166,7 +165,7 @@ function prepareDataForm(){
 		<h4 class="modal-title">Inserisci i dati per concludere il tuo ordine</h4>
 	  </div>
 	  <div class="modal-body">
-		<form role="form" action="saveOrder.php" method="POST">
+		<form role="form" action="getidOrder.php" method="POST">
 		  <div class="form-group">
 			<label for="nome">Nome e Cognome:</label>
 			<input type="text" class="form-control" id="nome" name="name" required>
@@ -198,7 +197,7 @@ function prepareDataForm(){
 		  	var forms = document.getElementsByTagName('form');
 		  	for (var i = 0; i < forms.length; i++) {
 		  		forms[i].noValidate = true;
-		  	
+
 		  		forms[i].addEventListener('submit', function(event) {
 		  			//Prevent submission if checkValidity on the form returns false.
 		  			if (!event.target.checkValidity()) {
