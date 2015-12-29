@@ -138,11 +138,9 @@ function prepareDataForm(){
 </script>
 </head>
 <body onload="print_row()">
-	<div style="
-	margin: auto;
-	width: 60%;
-	padding: 10px;">
-	<img src="ricevuta/header.jpg"/></div>
+	<header>
+		<h1>Pisa 3</h1>
+	</header>
 <div class="container form-group">
 	
 	<!--<ul class="nav nav-pills">
@@ -152,7 +150,8 @@ function prepareDataForm(){
 	  <li role="presentation"><a href="#">Amministrazione</a></li>
 	</ul>-->
 
-	  <h2>Ordina i tuoi prodotti</h2>       
+	  <h2>Ordina i tuoi prodotti</h2>
+	  <div class="alert alert-info" role="alert">Serve aiuto con le taglie o con il listino? Consulta la <a href="http://www.fiordaliso.it/fileadmin/fiordaliso.it/utility/tabella_taglie.pdf">guida alle taglie</a> e il <a href="http://www.fiordaliso.it/fileadmin/fiordaliso.it/listini/listino-uniforme-agesci.pdf">listino completo</a>.</div>      
 	  <table class="table">
 		<thead>
 		  <tr>
@@ -180,16 +179,16 @@ function prepareDataForm(){
 	<div class="modal-content">
 	  <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">Inserisci i dati per concludere il tuo ordine (compila tutti i campi)</h4>
+		<h4 class="modal-title">Inserisci i dati per concludere il tuo ordine</h4>
 	  </div>
 	  <div class="modal-body">
 		<form role="form" action="getIdOrder.php" method="POST">
 		  <div class="form-group">
-			<label for="nome">Nome e Cognome:</label>
+			<label for="nome">Nome e cognome:</label>
 			<input type="text" class="form-control" id="nome" name="name" required>
 		  </div>
 		  <div class="form-group">
-			<label for="email">eMail:</label>
+			<label for="email">Email:</label>
 			<input type="email" class="form-control" id="email" name="mail" required>
 		  </div>
 		  <div class="form-group">
@@ -197,24 +196,22 @@ function prepareDataForm(){
 		  	<input type="phone" class="form-control" id="phone" name="phone" required>
 		  </div>
 		  <div class="form-group">
-		   	<label for="pagamento">Modalità di Pagamento :</label>
+		   	<label for="pagamento">Modalità di pagamento:</label>
 		   	<label class="radio-inline"><input type="radio" name="pagamento" value="A mano" required checked>A mano a riunione</label>
-		   	<label class="radio-inline"><input type="radio" name="pagamento" value="Bonifico">Bonifico Bancario</label>
+		   	<label class="radio-inline"><input type="radio" name="pagamento" value="Bonifico">Bonifico bancario</label>
 		  </div>
 		  <div class="form-group">
 		    	<label for="branca">Branca:</label>
-		    	<label class="radio-inline"><input type="radio" name="branca" value="LC" required>LC (Coccinelle)</label>
-		    	<label class="radio-inline"><input type="radio" name="branca" value="EG">EG (Reparto)</label>
-		    	<label class="radio-inline"><input type="radio" name="branca" value="RS">RS (Clan)</label>
+		    	<label class="radio-inline"><input type="radio" name="branca" value="LC" required>L/C (Coccinelle)</label>
+		    	<label class="radio-inline"><input type="radio" name="branca" value="EG">E/G (Reparto)</label>
+		    	<label class="radio-inline"><input type="radio" name="branca" value="RS">R/S (Clan)</label>
 		   </div>
 		<input type="hidden" name="items" id="items" value="">
 		<input type="hidden" name="totale" id="totaleOrdine" value="">
 
 		  <button id="saveOrder" type="submit" class="btn btn-success">Invia</button>
+		  <div style="clear: both"></div>
 		</form>
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
 	  </div>
 	</div>
 

@@ -12,7 +12,7 @@
 		$saldato = ($row["saldato"]==1) ? "SI":"NO";
 		$consegnato = ($row["consegnato"]==1) ? "SI":"NO";
 		$branca = $row["branca"];
-		$totale = $row["totale"] + $costoGestioneOrdine;
+		$totale = $row["totale"];
 		$items = $db->getOrderItem($idOrdine);
 
 	require("mail_config.php");
@@ -31,7 +31,7 @@
 
 		$mailBody.= "Se hai scelto di pagare tramite <b>bonifico</b>, puoi effettuarlo al seguente IBAN: ".$iban;
 		$mailBodyPT .= "Se hai scelto di pagare tramite bonifico, puoi effettuarlo al seguente IBAN: ".$iban."\n";
-		$mailBody.= "\n".'Intestato a:<p style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">'.$propIban."</p>";
+		$mailBody.= 'Intestato a:<p style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">'.$propIban."</p>";
 		$mailBodyPT .= "Intestato a: ".$propIban."\n";
 		$mailBody.='Causale: <p style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">Saldo Ordine per Stella Alpina Num. '.$idOrdine.'</p> </h4>';
 		$mailBodyPT .= "Causale: Saldo Ordine per Stella Alpina Num. ".$idOrdine."\n";
