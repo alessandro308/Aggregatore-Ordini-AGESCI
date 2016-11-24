@@ -134,6 +134,40 @@ function removeItem(btnClicked){
 function prepareDataForm(){
 	$("#items").attr("value", encodeURIComponent(JSON.stringify(order_items)));
 	$("#totaleOrdine").attr("value", total.toString());
+	if(total != 0){
+		$("#warning").html(`<form role="form" action="getIdOrder.php" method="POST">
+		  <div class="form-group">
+			<label for="nome">Nome e cognome:</label>
+			<input type="text" class="form-control" id="nome" name="name" required>
+		  </div>
+		  <div class="form-group">
+			<label for="email">Email:</label>
+			<input type="email" class="form-control" id="email" name="mail" required>
+		  </div>
+		  <div class="form-group">
+		  	<label for="phone">Telefono:</label>
+		  	<input type="phone" class="form-control" id="phone" name="phone" required>
+		  </div>
+		  <div class="form-group">
+		   	<label for="pagamento">Modalità di pagamento:</label>
+		   	<label class="radio-inline"><input type="radio" name="pagamento" value="A mano" required checked>A mano a riunione</label>
+		   	<label class="radio-inline"><input type="radio" name="pagamento" value="Bonifico">Bonifico bancario</label>
+		  </div>
+		  <div class="form-group">
+		    	<label for="branca">Branca:</label>
+		    	<label class="radio-inline"><input type="radio" name="branca" value="LC" required>L/C (Coccinelle)</label>
+		    	<label class="radio-inline"><input type="radio" name="branca" value="EG">E/G (Reparto)</label>
+		    	<label class="radio-inline"><input type="radio" name="branca" value="RS">R/S (Clan)</label>
+		   </div>
+		<input type="hidden" name="items" id="items" value="">
+		<input type="hidden" name="totale" id="totaleOrdine" value="">
+
+		  <button id="saveOrder" type="submit" class="btn btn-success">Invia</button>
+		  <div style="clear: both"></div>
+		</form>`);
+	} else {
+		$("#warning").html("<h2>Attenzione, l'ordine risulta vuoto. Aggiungi almeno un oggetto!");
+	}
 }
 </script>
 </head>
@@ -174,44 +208,14 @@ function prepareDataForm(){
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
 	<!-- Modal content-->
 	<div class="modal-content">
 	  <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title">Inserisci i dati per concludere il tuo ordine</h4>
 	  </div>
-	  <div class="modal-body">
-		<form role="form" action="getIdOrder.php" method="POST">
-		  <div class="form-group">
-			<label for="nome">Nome e cognome:</label>
-			<input type="text" class="form-control" id="nome" name="name" required>
-		  </div>
-		  <div class="form-group">
-			<label for="email">Email:</label>
-			<input type="email" class="form-control" id="email" name="mail" required>
-		  </div>
-		  <div class="form-group">
-		  	<label for="phone">Telefono:</label>
-		  	<input type="phone" class="form-control" id="phone" name="phone" required>
-		  </div>
-		  <div class="form-group">
-		   	<label for="pagamento">Modalità di pagamento:</label>
-		   	<label class="radio-inline"><input type="radio" name="pagamento" value="A mano" required checked>A mano a riunione</label>
-		   	<label class="radio-inline"><input type="radio" name="pagamento" value="Bonifico">Bonifico bancario</label>
-		  </div>
-		  <div class="form-group">
-		    	<label for="branca">Branca:</label>
-		    	<label class="radio-inline"><input type="radio" name="branca" value="LC" required>L/C (Coccinelle)</label>
-		    	<label class="radio-inline"><input type="radio" name="branca" value="EG">E/G (Reparto)</label>
-		    	<label class="radio-inline"><input type="radio" name="branca" value="RS">R/S (Clan)</label>
-		   </div>
-		<input type="hidden" name="items" id="items" value="">
-		<input type="hidden" name="totale" id="totaleOrdine" value="">
-
-		  <button id="saveOrder" type="submit" class="btn btn-success">Invia</button>
-		  <div style="clear: both"></div>
-		</form>
+	  <div id="warning" class="modal-body">
+		
 	  </div>
 	</div>
 
