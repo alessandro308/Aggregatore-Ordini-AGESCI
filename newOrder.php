@@ -132,8 +132,6 @@ function removeItem(btnClicked){
 }
 
 function prepareDataForm(){
-	$("#items").attr("value", encodeURIComponent(JSON.stringify(order_items)));
-	$("#totaleOrdine").attr("value", total.toString());
 	if(total != 0){
 		$("#warning").html(`<form role="form" action="getIdOrder.php" method="POST">
 		  <div class="form-group">
@@ -168,6 +166,8 @@ function prepareDataForm(){
 	} else {
 		$("#warning").html("<h2>Attenzione, l'ordine risulta vuoto. Aggiungi almeno un oggetto!");
 	}
+	$("#items").attr("value", encodeURIComponent(JSON.stringify(order_items)));
+	$("#totaleOrdine").attr("value", total.toString());
 }
 </script>
 </head>
